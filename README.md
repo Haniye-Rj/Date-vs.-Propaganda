@@ -78,3 +78,8 @@ The network graph (found in `Node.html` or `Rplot01.pdf`) illustrates the cluste
 3. Update the data path in `R_A.R` to point to your local `.csv` file.
 4. Run the script to generate the rules and the interactive HTML visual.
 
+
+❤️ Stand with the people.
+🔥 Stand against oppression.
+🕊️ Free Iran.
+
