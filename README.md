@@ -1,8 +1,5 @@
 # Data vs. Propaganda: Mapping the 2026 Iranian Domestic Unrest
 
-[![Interactive Conflict Map](images/node_graph_screenshot.png)](https://github.com/Haniye-Rj/Date-vs.-Propaganda/blob/main/node.html)
-
-> **✨ Interactive View:** Click the banner above to explore the live, draggable node network.
 ## Project Overview
 
 This project applies **Association Rule Mining (ARM)** to large-scale event data to objectively analyze the drivers of social unrest in Iran during 2026. By utilizing the Apriori algorithm, this study identifies mathematically significant patterns between actors, locations, and conflict intensity.
@@ -68,6 +65,9 @@ The network graph (found in `Nod.html` or `Rplot01.pdf`) illustrates the cluster
 
 * **Central Hubs:** Nodes like `GOVERNMENT` and `GS_veryLow` act as hubs, showing they are central to the majority of conflict rules.
 * **Regional Hotspots:** Mashhad and Pahlavi (Gilan) appear as significant geographic triggers for protests.
+<img width="854" height="846" alt="image" src="https://github.com/user-attachments/assets/ae188298-d1bb-43ac-8f36-38db5d6b9e95" />
+<img width="545" height="543" alt="image" src="https://github.com/user-attachments/assets/ed8423f4-e34f-43da-b9ea-2b292372dbb6" />
+
 
 ---
 
