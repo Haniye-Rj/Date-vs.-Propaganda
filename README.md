@@ -61,7 +61,7 @@ I utilized the `arules` package in R to mine association rules with a **Minimum 
 
 ### The Node Visual (Network Graph)
 
-The network graph (found in `Nod.html` or `Rplot01.pdf`) illustrates the clusters of conflict.
+The network graph (found in `Node.html` or `Rplot01.pdf`) illustrates the clusters of conflict.
 
 * **Central Hubs:** Nodes like `GOVERNMENT` and `GS_veryLow` act as hubs, showing they are central to the majority of conflict rules.
 * **Regional Hotspots:** Mashhad and Pahlavi (Gilan) appear as significant geographic triggers for protests.
