@@ -4,7 +4,7 @@
 
 This project applies **Association Rule Mining (ARM)** to large-scale event data to objectively analyze the drivers of social unrest in Iran during 2026. By utilizing the Apriori algorithm, this study identifies mathematically significant patterns between actors, locations, and conflict intensity.
 
-The core mission of this project is **intellectual honesty**. It seeks to answer state-sponsored narratives—which often attribute domestic protests to foreign funding (e.g., USA)—by examining whether the data supports those claims or indicates a more domestic, grievance-based origin.
+The core mission of this project is **intellectual honesty**. It seeks to answer state-sponsored narratives which often attribute domestic protests to foreign funding (e.g., USA) by examining whether the data supports those claims or indicates a more domestic, grievance-based origin.
 
 ---
 
