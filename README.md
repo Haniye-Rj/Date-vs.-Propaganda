@@ -1,6 +1,8 @@
 # Data vs. Propaganda: Mapping the 2026 Iranian Domestic Unrest
 
+[![Interactive Conflict Map](images/node_graph_screenshot.png)](https://github.com/Haniye-Rj/Date-vs.-Propaganda/blob/main/node.html)
 
+> **✨ Interactive View:** Click the banner above to explore the live, draggable node network.
 ## Project Overview
 
 This project applies **Association Rule Mining (ARM)** to large-scale event data to objectively analyze the drivers of social unrest in Iran during 2026. By utilizing the Apriori algorithm, this study identifies mathematically significant patterns between actors, locations, and conflict intensity.
