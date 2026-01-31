@@ -1,85 +1,103 @@
 # Data vs. Propaganda: Mapping the 2026 Iranian Domestic Unrest
 
-## Project Overview
+**Author:** [Haniyeh Raji]
 
-This project applies **Association Rule Mining (ARM)** to large-scale event data to objectively analyze the drivers of social unrest in Iran during 2026. By utilizing the Apriori algorithm, this study identifies mathematically significant patterns between actors, locations, and conflict intensity.
-
-The core mission of this project is **intellectual honesty**. It seeks to answer state-sponsored narratives which often attribute domestic protests to foreign funding (e.g., USA) by examining whether the data supports those claims or indicates a more domestic, grievance-based origin.
+**Date:** January 2026
 
 ---
 
-## Dataset & Data Collection
+## 1. Abstract
 
-The data utilized in this study is sourced from the **GDELT Project** (Global Database of Events, Language, and Tone).
-
-* **Data Source:** GDELT 2.0 Global Knowledge Graph.
-* **Collection Method:** Data was queried via Google BigQuery, specifically targeting events located in Iran with a timestamp in early 2026.
-* **Volume:** The dataset contains approximately **16,811** unique event records.
-* **Key Features:**
-* `Actor1Name`: The primary entity involved (e.g., GOVERNMENT, DEMONSTRATOR).
-* `EventCode`: Categorized action based on the CAMEO scale (e.g., 141 for Protests).
-* `GoldsteinScale`: A numeric value (-10 to +10) measuring the theoretical impact an event has on state stability.
-* `NumArticles`: The volume of global media coverage, used as a proxy for event significance.
-
-
+As domestic unrest escalated across Iran in early 2026, the state implemented an "Absolute Digital Isolation" strategy, leading to a near-total nationwide internet blackout by mid-January. This project applies **Association Rule Mining (ARM)** to **16,811** event records from the **GDELT Project** to analyze conflict drivers during this information lockdown. While IRGC narratives frequently attribute domestic protests to foreign funding (e.g., USA, Israel), MY mathematical modeling identifies a domestic, grievance-based origin centered on government-actor interactions. By integrating external research from **Citizen Lab (Report No. 189)**, we distinguish between high-volume digital influence operations and the statistically significant drivers of physical unrest.
 
 ---
 
-## Project Goals
+## 2. Purpose & Mission
 
-1. **Identify Conflict Triggers:** Determine which combinations of actors and locations most frequently result in "Low Stability" events.
-2. **Verify Narratives:** Test the Islamic Republic’s propaganda. If protests are "foreign-funded," the data should show a high correlation between foreign actors (LHS) and protests (RHS).
-3. **Provide Visual Transparency:** Create a **Node Visual** (Network Graph) that allows researchers and the public to see the "web of accountability" in the conflict.
-4. **Stability Analysis:** Map how specific government actions directly correlate with drops in the GoldsteinScale (Stability).
+The core mission of this study is **Intellectual Honesty**. In an environment where the state controls the physical space and the digital gateway, data is the last line of defense for objective truth.
 
----
-
-## Methodology
-
-### Data Transformation
-
-To make the data suitable for the Apriori algorithm, continuous variables were "binned" into categorical factors:
-
-* **Stability:** Binned from the GoldsteinScale into levels: `GS_veryLow`, `GS_Low`, `GS_High`, and `GS_veryHigh`.
-* **Media Volume:** Binned from NumArticles into `Media_Low`, `Media_Med`, and `Media_High`.
-
-### Algorithm
-
-I utilized the `arules` package in R to mine association rules with a **Minimum Support of 0.005** and **Minimum Confidence of 0.5**. Rules were then sorted by **Lift** to identify the strongest non-random relationships.
+* **Narrative Verification:** Testing the Islamic Republic’s claim of "foreign-funded" instability. If true, the data should show high *Confidence* and *Lift* between foreign actors (LHS) and protest events (RHS).
+* **Accountability Mapping:** Creating a visual "Web of Accountability" to show which domestic government actions correlate with drops in state stability.
 
 ---
 
-## Key Findings
+## 3. Methodology
 
-* **Domestic Responsibility:** The strongest rule found (`Lift: 3.61`) shows that when the **GOVERNMENT** is the actor during **GS_veryLow** stability, it leads to **Protests (141)** with a **90.7% confidence**.
-* **Absence of Foreign Influence:** In the top 10 most significant rules for protests, neither the "USA" nor "United States" appeared as a primary driver (LHS).
-* **Violence Correlation:** Actions such as **EventCode 145 (Violent Protest)** were found to have a **100% confidence** (Confidence: 1) in resulting in Very Low Stability, highlighting the severity of the 2026 unrest.
+### Data Collection & Transformation
+
+* **Source:** GDELT 2.0 Global Knowledge Graph via Google BigQuery.
+* **Window:** January 1, 2026 – January 18, 2026.
+* **Continuous to Categorical:** To make the data suitable for the **Apriori Algorithm**, continuous variables were "binned":
+* **Stability:** `GS_veryLow` (-10 to -5), `GS_Low` (-5 to 0), etc.
+* **Media Volume:** `Media_Low`, `Media_Med`, `Media_High`.
+
+
+
+### Algorithmic Parameters
+
+Utilizing the `arules` package in R:
+
+* **Min. Support:** 0.005
+* **Min. Confidence:** 0.5
+* **Metric of Interest:** **Lift** (measuring how much more likely a protest is given a specific actor, compared to random chance).
 
 ---
 
-## Visualizations
+## 4. Key Findings
 
-### The Node Visual (Network Graph)
+### I. Domestic Responsibility
 
-The network graph (found in `Node.html` or `Rplot01.pdf`) illustrates the clusters of conflict.
+The strongest rules in the dataset point toward internal triggers.
 
-* **Central Hubs:** Nodes like `GOVERNMENT` and `GS_veryLow` act as hubs, showing they are central to the majority of conflict rules.
+> **Rule:** {GOVERNMENT, GS_veryLow}  {Protest (CAMEO 141)}
+> **Confidence:** 90.7% | **Lift:** 3.61
+
+This indicates that government actions during periods of low stability are the most reliable predictors of protest activity, far outweighing any other actor.
+
+### II. Absence of Foreign Influence
+
+Despite state claims, foreign actors did not appear as primary drivers.
+
+* **Finding:** Neither the "USA" nor "United States" appeared in the top 20 rules sorted by Lift.
+* **External Cross-Reference:** Citizen Lab's **Project PRISONBREAK** research confirmed an Israel-linked AI influence operation was active on X (Twitter) at this time. However, our GDELT analysis shows these digital signals had a negligible correlation with the **physical events** on the ground in Mashhad or Gilan.
+
+### III. The "Blackout" Artifact
+
+The data shows a sharp drop in event volume starting **January 8, 2026**.
+
+* This is not a sign of peace; it is a sign of successful **censorship**.
+---
+
+## 5. Visualizations
+
+The project includes an interactive **Network Graph** (Node Visual) illustrating the "Hubs of Conflict."
+
+* **Central Hubs:** `GOVERNMENT` and `GS_veryLow` act as the primary anchors for the network.
 * **Regional Hotspots:** Mashhad and Pahlavi (Gilan) appear as significant geographic triggers for protests.
-<img width="854" height="846" alt="image" src="https://github.com/user-attachments/assets/ae188298-d1bb-43ac-8f36-38db5d6b9e95" />
-<img width="545" height="543" alt="image" src="https://github.com/user-attachments/assets/ed8423f4-e34f-43da-b9ea-2b292372dbb6" />
-
 
 ---
 
-## How to Run
+## 6. Limitations & Reality Check
+
+Data in a conflict zone is never perfect. This report acknowledges:
+
+1. **The Reporting Bias:** GDELT relies on News. During a blackout, thousands of events remain "dark." The reality on the ground is likely more severe than the data suggests.
+2. **State-Media Noise:** After the blackout, a higher percentage of available data comes from state-aligned sources. We utilized "Actor Type" filtering to mitigate this, but some bias is inevitable.
+3. **Correlation vs. Causality:** While the rules show a strong *association*, they describe a feedback loop rather than a simple linear cause.
+
+---
+
+## 7. Conclusion
+
+The data supports a clear conclusion: **The 2026 unrest was a domestic phenomenon.** While foreign AI influence operations existed in the digital sphere (as documented by Citizen Lab), they were not the "drivers" of the physical conflict. The "Web of Accountability" points squarely at domestic government interactions with the citizenry.
+
+❤️ **Stand with the people.** 🔥 **Stand against oppression.** 🕊️ **Free Iran.**
+
+---
+
+### How to Run
 
 1. Clone this repository.
-2. Ensure you have R installed along with libraries: `arules`, `arulesViz`, `visNetwork`, and `ggplot2`.
-3. Update the data path in `R_A.R` to point to your local `.csv` file.
-4. Run the script to generate the rules and the interactive HTML visual.
-
-
-❤️ Stand with the people.
-🔥 Stand against oppression.
-🕊️ Free Iran.
+2. Ensure R libraries `arules`, `arulesViz`, `visNetwork`, and `ggplot2` are installed.
+3. Run `R_A.R` to regenerate the rules and the interactive HTML visual.
 
